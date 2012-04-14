@@ -1,0 +1,93 @@
+" Aesthetics
+" set background=light
+" color mustang
+" color railscasts2
+
+" let g:solarized_termcolors=256
+set t_Co=16
+set background=dark
+colorscheme solarized
+
+" temporarily disable numbered lines as railscasts theme doesn't style it well
+" set nonumber
+"
+:nmap \ ,
+
+" set gfn=Panic\ Sans:h12
+
+" Basic Config
+set cmdheight=1
+set hidden
+set nobackup
+set noswapfile
+
+" Misc Config
+" nnoremap :put
+
+" Screen movements
+set scrolloff=3
+map mt zt
+map mm zz
+map mb zb
+
+" General keyboard mappings
+map <C-s> :wa<cr>
+imap <c-s> <Esc><c-s>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+inoremap <C-j> <Esc><C-w>j
+inoremap <C-k> <Esc><C-w>k
+
+inoremap jj <ESC>
+inoremap kk <ESC>
+
+" Command-T
+map <Leader>t :CtrlP<CR>
+" reverse results for easier viewing
+let g:CommandTMatchWindowReverse  = 1
+
+" Buffer switching
+map <Leader>f :CtrlPBuffer<cr>
+nnoremap <Leader>l :buffers<CR>:buffer<Space>
+" nnoremap <C-9> :e#
+" set wildchar=<Tab> wildmenu wildmode=full
+
+" Mappings to access buffers (don't use "\p" because a
+" " delay before pressing "p" would accidentally paste).
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
+" It's useful to show the buffer number in the status line.
+" set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
+" Tabularize
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+" Tabularize Gherkin tables
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
