@@ -14,6 +14,8 @@ colorscheme solarized
 :nmap \ ,
 
 " set gfn=Panic\ Sans:h12
+  "
+map <Leader>w :w<CR>
 
 " Basic Config
 set cmdheight=1
@@ -31,9 +33,8 @@ map mm zz
 map mb zb
 
 " General keyboard mappings
-map <C-s> :wa<cr>
+"map <C-s> :wa<cr>
 imap <c-s> <Esc><c-s>
-
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
