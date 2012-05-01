@@ -1,0 +1,21 @@
+# ~/.tmuxinator/fap.yml
+# you can make as many tabs as you wish...
+
+project_name: Findaport
+project_root: ~/code/ports/current
+# pre: sudo /etc/rc.d/mysqld start
+tabs:
+  - editor:
+      layout: 5427,182x42,0,0{110x42,0,0,71x42,111,0[71x8,111,0,71x33,111,9]}
+      panes:
+        - vim .
+        - spork
+        -
+  - server: rails s
+  - console: rails c
+  - shell: git pull origin develop
+  # - server:
+  #     layout: main-horizontal
+  #     panes:
+  #       - rails c
+  #       - rails s
