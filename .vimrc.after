@@ -16,6 +16,8 @@ colorscheme solarized
 " set gfn=Panic\ Sans:h12
   "
 map <Leader>w :w<CR>
+map <Leader>q :q<CR>
+map <Leader>qq :q!<CR>
 
 " Basic Config
 set cmdheight=1
