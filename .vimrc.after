@@ -52,9 +52,13 @@ map <Leader>t :CtrlP<CR>
 " reverse results for easier viewing
 let g:CommandTMatchWindowReverse  = 1
 
+" Ack - fin[D]
+map <Leader>d :Ack<Space>
+
 " Buffer switching
 map <Leader>f :CtrlPBuffer<cr>
 nnoremap <Leader>l :buffers<CR>:buffer<Space>
+
 " nnoremap <C-9> :e#
 " set wildchar=<Tab> wildmenu wildmode=full
 
