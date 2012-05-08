@@ -35,7 +35,6 @@ map mm zz
 map mb zb
 
 " General keyboard mappings
-"map <C-s> :wa<cr>
 imap <c-s> <Esc><c-s>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -59,8 +58,9 @@ map <Leader>d :Ack<Space>
 map <Leader>f :CtrlPBuffer<cr>
 nnoremap <Leader>l :buffers<CR>:buffer<Space>
 
-" nnoremap <C-9> :e#
-" set wildchar=<Tab> wildmenu wildmode=full
+" Resizing splits
+nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " Mappings to access buffers (don't use "\p" because a
 " " delay before pressing "p" would accidentally paste).

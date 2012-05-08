@@ -54,4 +54,4 @@ source ~/dot-files/git-flow-completion.zsh
 
 # Tmux
 # this is needed for correct Solarized color in vim
-alias tmux="TERM=screen-256color-bce tmux"
+# alias tmux="TERM=screen-256color-bce tmux"
