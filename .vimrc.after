@@ -25,8 +25,7 @@ set hidden
 set nobackup
 set noswapfile
 
-" Misc Config
-" nnoremap :put
+
 
 " Screen movements
 set scrolloff=3
@@ -53,6 +52,7 @@ let g:CommandTMatchWindowReverse  = 1
 
 " Ack - fin[D]
 map <Leader>d :Ack<Space>
+vnoremap ,d y:<C-U>Ack "<C-R>""<Space>
 
 " Buffer switching
 map <Leader>f :CtrlPBuffer<cr>
