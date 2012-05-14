@@ -25,8 +25,6 @@ set hidden
 set nobackup
 set noswapfile
 
-
-
 " Screen movements
 set scrolloff=3
 map mt zt
@@ -45,10 +43,14 @@ inoremap <C-k> <Esc><C-w>k
 inoremap jj <ESC>
 inoremap kk <ESC>
 
-" Command-T
+" CtrlP file search
 map <Leader>t :CtrlP<CR>
+map <Leader>g :CtrlPMRU<CR>
+
+" Rails Alternate file
+map <Leader>ra :A<CR>
 " reverse results for easier viewing
-let g:CommandTMatchWindowReverse  = 1
+" let g:CommandTMatchWindowReverse  = 1
 
 " Ack - fin[D]
 map <Leader>d :Ack<Space>
@@ -58,7 +60,9 @@ vnoremap ,d y:<C-U>Ack "<C-R>""<Space>
 map <Leader>f :CtrlPBuffer<cr>
 nnoremap <Leader>l :buffers<CR>:buffer<Space>
 
-" Resizing splits
+" Splits
+nnoremap <Leader>s :split<CR>
+nnoremap <Leader>v :vsplit<CR>
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
