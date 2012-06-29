@@ -49,6 +49,7 @@ map <Leader>g :CtrlPMRU<CR>
 
 " Rails Alternate file
 map <Leader>ra :A<CR>
+map <Leader>rl :R<CR>
 " reverse results for easier viewing
 " let g:CommandTMatchWindowReverse  = 1
 
