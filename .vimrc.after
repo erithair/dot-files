@@ -44,8 +44,13 @@ inoremap jj <ESC>
 inoremap kk <ESC>
 
 " CtrlP file search
-map <Leader>t :CtrlP<CR>
+" map <Leader>t :CtrlP<CR>
 map <Leader>g :CtrlPMRU<CR>
+
+" Tmux / turbux
+let g:no_turbux_mappings = 1
+map <leader>t <Plug>SendFocusedTestToTmux
+map <leader>T <Plug>SendTestToTmux
 
 " Rails Alternate file
 map <Leader>ra :A<CR>
