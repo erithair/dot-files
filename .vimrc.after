@@ -13,11 +13,24 @@ colorscheme solarized
 "
 :nmap \ ,
 
-" set gfn=Panic\ Sans:h12
-  "
 map <Leader>w :w<CR>
 map <Leader>q :q<CR>
 map <Leader>qq :q!<CR>
+
+map <Leader>em :e ~/.vimrc.after<CR>
+nnoremap <Leader>s :source %<CR>
+set pastetoggle=<C-g>p
+
+
+
+" Syntax Highlighting
+au BufNewFile,BufRead *.god set filetype=ruby
+
+" Janus overwrites
+nnoremap <Leader>hs :nohlsearch<CR>
+" Fix below
+" cnoremap %% <C-R>=expand('%:h').'/'<CR>
+" map <Leader>gk :edit %%
 
 " Basic Config
 set cmdheight=1
@@ -43,9 +56,16 @@ inoremap <C-k> <Esc><C-w>k
 inoremap jj <ESC>
 inoremap kk <ESC>
 
+" unmap! <Leader><Leader>
+" set autowrite true
+" why is below slow??
+map <Leader><Leader> <C-^>
+
 " CtrlP file search
 " map <Leader>t :CtrlP<CR>
 map <Leader>g :CtrlPMRU<CR>
+
+map <Leader>[ :set invpaste<CR>:set paste?<CR>
 
 " Tmux / turbux
 let g:no_turbux_mappings = 1
@@ -67,8 +87,8 @@ map <Leader>f :CtrlPBuffer<cr>
 nnoremap <Leader>l :buffers<CR>:buffer<Space>
 
 " Splits
-nnoremap <Leader>s :split<CR>
-nnoremap <Leader>v :vsplit<CR>
+" nnoremap <Leader>s :split<CR>
+" nnoremap <Leader>v :vsplit<CR>
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
@@ -86,6 +106,18 @@ nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 " It's useful to show the buffer number in the status line.
 " set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
+" Cursor
+if &term =~ "xterm\\|rxvt"
+  " use an orange cursor in insert mode
+  let &t_SI = "\<Esc>]12;orange\x7"
+  " use a red cursor otherwise
+  let &t_EI = "\<Esc>]12;red\x7"
+  silent !echo -ne "\033]12;red\007"
+  " reset cursor when vim exits
+  autocmd VimLeave * silent !echo -ne "\033]112\007"
+  " use \003]12;gray\007 for gnome-terminal
+endif
 
 " Tabularize
 if exists(":Tabularize")
