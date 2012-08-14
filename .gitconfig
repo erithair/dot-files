@@ -1,0 +1,24 @@
+[core]
+	quotepath = false
+	excludesfile = /Users/zac/.gitignore
+	editor = /usr/bin/vim
+[user]
+	name = Zac Zheng
+	email = zac@zenpow.com
+[origin]
+  push = refs/tags/*:refs/tags/*
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+  a = add
+  l = pull
+  p = push
+  aa = add --all
+  sbu = submodule update
+  cp = cherry-pick
+  cod = !git checkout develop && git submodule update
+  com = !git checkout master && git submodule update
