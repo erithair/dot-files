@@ -1,6 +1,6 @@
 call janus#disable_plugin("nerdtree")
 call janus#disable_plugin("syntastic", "Slows down file save")
-call janus#disable_plugin("vimwiki", "Not needed")
+" call janus#disable_plugin("vimwiki", "Not needed")
 call janus#disable_plugin("easymotion", "non standard motion; dot doesn't work")
 
 let mapleader = ","

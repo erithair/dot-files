@@ -8,10 +8,13 @@ set t_Co=16
 set background=dark
 colorscheme solarized
 
-" temporarily disable numbered lines as railscasts theme doesn't style it well
-" set nonumber
-"
-:nmap \ ,
+nmap \ ,
+
+nnoremap / /\v
+vnoremap / /\v
+nnoremap <leader><space> :noh<cr>
+
+au FocusLost * :wa
 
 map <Leader>w :w<CR>
 map <Leader>q :q<CR>
@@ -21,7 +24,7 @@ map <Leader>em :e ~/.vimrc.after<CR>
 nnoremap <Leader>s :source %<CR>
 set pastetoggle=<C-g>p
 
-
+nnoremap <Leader>s :source %<CR>
 
 " Syntax Highlighting
 au BufNewFile,BufRead *.god set filetype=ruby
@@ -44,6 +47,11 @@ map mt zt
 map mm zz
 map mb zb
 
+" TSlime
+vmap <C-c><C-c> <Plug>SendSelectionToTmux
+nmap <C-c><C-c> <Plug>NormalModeSendToTmux
+nmap <C-c>r <Plug>SetTmuxVars
+
 " General keyboard mappings
 imap <c-s> <Esc><c-s>
 nnoremap <C-h> <C-w>h
@@ -62,8 +70,9 @@ inoremap kk <ESC>
 map <Leader><Leader> <C-^>
 
 " CtrlP file search
-" map <Leader>t :CtrlP<CR>
-map <Leader>g :CtrlPMRU<CR>
+map <Leader>t :CtrlP<CR>
+" map <Leader>g :CtrlPMRU<CR>
+map <Leader>fk :CtrlPBuffer<cr>
 
 map <Leader>[ :set invpaste<CR>:set paste?<CR>
 
@@ -79,12 +88,12 @@ map <Leader>rl :R<CR>
 " let g:CommandTMatchWindowReverse  = 1
 
 " Ack - fin[D]
-map <Leader>d :Ack<Space>
-vnoremap ,d y:<C-U>Ack "<C-R>""<Space>
+map <Leader>a :Ack<Space>
+vnoremap ,a y:<C-U>Ack "<C-R>""<Space>
 
 " Buffer switching
-map <Leader>f :CtrlPBuffer<cr>
-nnoremap <Leader>l :buffers<CR>:buffer<Space>
+nnoremap <Leader>s :source %<CR>
+" nnoremap <Leader>l :buffers<CR>:buffer<Space>
 
 " Splits
 " nnoremap <Leader>s :split<CR>
