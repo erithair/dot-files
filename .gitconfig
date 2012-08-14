@@ -22,3 +22,10 @@
   cp = cherry-pick
   cod = !git checkout develop && git submodule update
   com = !git checkout master && git submodule update
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
