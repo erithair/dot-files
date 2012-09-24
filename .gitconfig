@@ -8,6 +8,7 @@
 [origin]
   push = refs/tags/*:refs/tags/*
 [alias]
+  f = flow
   st = status
   ci = commit
   br = branch
@@ -18,10 +19,13 @@
   l = pull
   p = push
   aa = add --all
-  sbu = submodule update
+  smu = submodule update
   cp = cherry-pick
   cod = !git checkout develop && git submodule update
   com = !git checkout master && git submodule update
+  mt = mergetool
+  shx = flow hotfix start
+  fhx = flow hotfix finish
 [merge]
 	tool = diffmerge
 [mergetool "diffmerge"]

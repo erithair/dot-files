@@ -3,4 +3,5 @@
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias be="bundle exec"
 alias vag='vagrant'
+alias mt='motion'
 
