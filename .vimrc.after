@@ -15,7 +15,7 @@ vnoremap / /\v
 nnoremap <leader><space> :noh<cr>
 
 au FocusLost * :wa
-
+  
 map <Leader>w :w<CR>
 map <Leader>q :q<CR>
 map <Leader>qq :q!<CR>
@@ -53,7 +53,6 @@ nmap <C-c><C-c> <Plug>NormalModeSendToTmux
 nmap <C-c>r <Plug>SetTmuxVars
 
 " General keyboard mappings
-imap <c-s> <Esc><c-s>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k

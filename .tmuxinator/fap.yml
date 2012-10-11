@@ -12,5 +12,6 @@ tabs:
         -
         -
   - server: rails s
+  - remote:
   - console: rails c
   - shell:
