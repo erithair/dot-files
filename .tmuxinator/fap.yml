@@ -3,7 +3,7 @@
 
 project_name: Findaport
 project_root: ~/code/ports/current
-pre:
+pre: ctags -R --exclude=.git --exclude=log * &
 tabs:
   - editor:
       layout: 5427,182x42,0,0{110x42,0,0,71x42,111,0[71x8,111,0,71x33,111,9]}
