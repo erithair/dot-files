@@ -10,7 +10,6 @@ ZSH_THEME="smt" # includes time since last git commit
 
 source ~/.zsh_alias
 
-
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -39,6 +38,9 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
+# Android SDK
+export PATH=$PATH:$HOME/local/android-sdk-macosx/tools/:$HOME/local/android-sdk-macosx/platform-tools/
+
 export EDITOR=/usr/bin/vim
 
 # MySQL
@@ -47,6 +49,9 @@ export PATH=$PATH:/usr/local/mysql/bin
 DISABLE_AUTO_TITLE=true
 unsetopt correct_all
 
+# Add current path
+export PATH=$PATH:.
+
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
@@ -54,6 +59,18 @@ eval "$(rbenv init -)"
 # git flow completion
 source ~/dot-files/git-flow-completion.zsh
 
-# Tmux
-# this is needed for correct Solarized color in vim
-# alias tmux="TERM=screen-256color-bce tmux"
+# press C-X C-E to edit command line with $EDITOR
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
+
+# Functions
+current_hotfix_branch ()
+{
+  local hotfix_prefix=$(git config --get gitflow.prefix.hotfix)
+  local hotfix_branches=$(echo "$(git branch --no-color | sed 's/^[* ] //')" | grep "^$hotfix_prefix")
+  local first_branch=$(echo ${hotfix_branches} | head -n1)
+  first_branch=${first_branch#$hotfix_prefix}
+  echo "$first_branch"
+}
