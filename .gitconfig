@@ -14,18 +14,37 @@
   br = branch
   co = checkout
   df = diff
-  lg = log -p
   a = add
   l = pull
   p = push
   aa = add --all
+  ri = rebase -i
+
   smu = submodule update
   cp = cherry-pick
   cod = !git checkout develop && git submodule update
   com = !git checkout master && git submodule update
   mt = mergetool
-  shx = flow hotfix start
-  fhx = flow hotfix finish
+  fix-start = flow hotfix start
+  # fix-done = !git flow hotfix finish `current_hotfix_branch`
+  fix-done = "!_() { p=$(git config --get gitflow.prefix.hotfix); b=$(echo \"$(git branch --no-color | sed 's/^[* ] //')\" | grep \"^$p\"); f=$(echo ${b} | head -n1); f=${f#$p}; git flow hotfix finish \"$f\"; }; _"
+
+  lg = !git log --graph --pretty=oneline --abbrev-commit
+
+  # Fancy logging.
+  #   h = head
+  #   hp = head with patch
+  #   r = recent commits, only current branch
+  #   ra = recent commits, all reachable refs
+  #   l = all commits, only current branch
+  #   la = all commits, all reachable refs
+  head = !git l -1
+  h = !git head
+  hp = "!. ~/.githelpers && show_git_head"
+  r = !git l -30
+  ra = !git r --all
+  l = "!. ~/.githelpers && pretty_git_log"
+  la = !git l --all  
 [merge]
 	tool = diffmerge
 [mergetool "diffmerge"]
@@ -33,3 +52,5 @@
 	trustExitCode = true
 [mergetool]
 	keepBackup = false
+[color]
+	ui = true
