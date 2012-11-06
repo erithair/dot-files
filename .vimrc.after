@@ -64,7 +64,7 @@ inoremap jj <ESC>
 inoremap kk <ESC>
 
 " unmap! <Leader><Leader>
-" set autowrite true
+set autowrite true
 " why is below slow??
 map <Leader><Leader> <C-^>
 

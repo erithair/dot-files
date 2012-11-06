@@ -1,8 +1,8 @@
 # ~/.tmuxinator/fap.yml
 # you can make as many tabs as you wish...
 
-project_name: Findaport
-project_root: ~/code/ports/current
+project_name: bjrubyist
+project_root: ~/code/bjrubyist
 pre: 
 tabs:
   - editor:
@@ -12,7 +12,5 @@ tabs:
         -
         -
   - server: rails s
-  - remote:
   - console: rails c
-  - shell:
   - background: ctags -R --exclude=.git --exclude=log *
