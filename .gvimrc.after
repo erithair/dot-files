@@ -1,0 +1,9 @@
+set background=light
+colorscheme solarized
+
+set guifont=Monaco:h14
+
+" Remove menu bar
+set guioptions+=m
+
+set guioptions-=T
