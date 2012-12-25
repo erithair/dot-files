@@ -54,3 +54,5 @@
 	keepBackup = false
 [color]
 	ui = true
+[push]
+	default = matching

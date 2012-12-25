@@ -47,7 +47,23 @@ map mt zt
 map mm zz
 map mb zb
 
-" TSlime
+" Tabs
+map <C-n> :tabnext<CR>
+map <leader>tn :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+
+" Snippet
+map ,ss :e ~/.vim/janus/vim/tools/snipmate-snippets/snippets/ruby.snippets<cr>
+
+" vim-turbux, depends on TSlime
+unmap <leader>t
+unmap <leader>T
+"let g:turbux_command_rspec  = 'script/test'        " use Gary Bernhardt's script
+let g:turbux_command_rspec  = 'rspec'        " use Gary Bernhardt's script
+map <leader>R <Plug>SendTestToTmux
+map <leader>r <Plug>SendFocusedTestToTmux
 vmap <C-c><C-c> <Plug>SendSelectionToTmux
 nmap <C-c><C-c> <Plug>NormalModeSendToTmux
 nmap <C-c>r <Plug>SetTmuxVars
@@ -64,14 +80,29 @@ inoremap jj <ESC>
 inoremap kk <ESC>
 
 " unmap! <Leader><Leader>
-set autowrite true
+" set autosave true
 " why is below slow??
 map <Leader><Leader> <C-^>
 
-" CtrlP file search
-map <Leader>t :CtrlP<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FILE NAVIGATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " map <Leader>g :CtrlPMRU<CR>
-map <Leader>fk :CtrlPBuffer<cr>
+map <leader>gv :CtrlP app/views<cr>
+map <leader>gc :CtrlP app/controllers<cr>
+map <leader>gm :CtrlP app/models<cr>
+map <leader>gh :CtrlP app/helpers<cr>
+map <leader>gl :CtrlP lib<cr>
+map <leader>gp :CtrlP public<cr>
+map <leader>gs :CtrlP spec<cr>
+map <leader>gf :CtrlP features<cr>
+map <leader>gg :split Gemfile<cr>
+map <leader>gt :CtrlPTag<cr>
+map <leader>gk :CtrlPBuffer<cr>
+map <leader>f :CtrlP<cr>
+map <leader>F :CtrlP %%<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 map <Leader>[ :set invpaste<CR>:set paste?<CR>
 
@@ -148,3 +179,12 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
+
+" Change hash synax to Ruby 1.9
+function! s:ChangeHashSyntax(line1,line2)
+    let l:save_cursor = getpos(".")
+    silent! execute ':' . a:line1 . ',' . a:line2 . 's/:\([a-z0-9_]\+\)\s\+=>/\1:/g'
+    call setpos('.', l:save_cursor)
+endfunction
+
+command! -range=% ChangeHashSyntax call <SID>ChangeHashSyntax(<line1>,<line2>)
