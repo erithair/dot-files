@@ -9,13 +9,10 @@ tabs:
       layout: 5427,182x42,0,0{110x42,0,0,71x42,111,0[71x8,111,0,71x33,111,9]}
       panes:
         - vim .
-        -
-        -
   - dashboard:
       layout: 5427,182x42,0,0{110x42,0,0,71x42,111,0[71x8,111,0,71x33,111,9]}
       panes:
-        - 
         - rails c
         - 
-  - server: rails s
+  - server: bundle exec guard
   - background: ctags -R --exclude=.git --exclude=log *

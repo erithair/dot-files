@@ -2,6 +2,7 @@
 	quotepath = false
 	excludesfile = /Users/zac/.gitignore
 	editor = /usr/bin/vim
+	autocrlf = input
 [user]
 	name = Zac Zheng
 	email = zac@zenpow.com

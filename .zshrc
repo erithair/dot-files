@@ -74,3 +74,6 @@ current_hotfix_branch ()
   first_branch=${first_branch#$hotfix_prefix}
   echo "$first_branch"
 }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
