@@ -3,6 +3,16 @@
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias be="bundle exec"
 alias vag='vagrant'
-alias mt='motion'
 alias capd='cap deploy'
+alias zu='zeus'
+alias r='rake'
+alias b='bundle'
 
+alias vimgc='vim ~/.gitconfig'
+alias vimza='vim ~/.zsh_alias'
+
+alias zmig='zeus rake db:migrate && zeus rake db:test:prepare'
+
+alias bi='bash ~/bin/bundle_install_taobao.sh'
+
+alias gpa='git push all'
