@@ -19,7 +19,6 @@ au FocusLost * :wa
 map <Leader>w :w<CR>
 map <Leader>q :q<CR>
 map <Leader>qq :q!<CR>
-
 map <Leader>em :e ~/.vimrc.after<CR>
 nnoremap <Leader>re :source %<CR>
 set pastetoggle=<C-g>p
@@ -32,6 +31,16 @@ map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
 map <Leader>nf :sp ~/Dropbox/notes/workflow_notes.txt<cr>
 
+" Quickfix
+map <Leader>co :copen<CR>
+map <Leader>cr :cr<CR>
+map <Leader>cl :ccl<CR>
+map <Leader>cn :cn<CR>
+map <Leader>cp :cp<CR>
+
+
+" Git
+map <Leader>gr :Gread
 
 " Syntax Highlighting
 au BufNewFile,BufRead *.god set filetype=ruby
@@ -51,6 +60,10 @@ set noswapfile
 " Screen movements
 set scrolloff=3
 
+" File navigation
+map <leader>an :next<CR>
+map <leader>ap :prev<CR>
+
 " Tabs
 map <C-n> :tabnext<CR>
 map <C-p> :tabprev<CR>
@@ -63,17 +76,17 @@ map <leader>tm :tabmove
 map ,sn :e ~/.vim/janus/vim/tools/snipmate-snippets/snippets/ruby.snippets<cr>
 
 " vim-turbux, depends on TSlime
-unmap <leader>t
-unmap <leader>T
 "let g:turbux_command_rspec  = 'script/test'        " use Gary Bernhardt's script
-let g:turbux_command_rspec  = 'rspec'        " use Gary Bernhardt's script
+let g:turbux_command_rspec  = 's'
+let g:turbux_command_cucumber  = 'zeus cucumber'
 
 " Tslime and Tmux
-map <leader>R <Plug>SendTestToTmux
-map <leader>r <Plug>SendFocusedTestToTmux
-" Custom below to have option --format doc
-"map <leader>R <Plug>SendTestToTmux
-"map <leader>r <Plug>SendFocusedTestToTmux
+map <leader>T <Plug>SendTestToTmux
+map <leader>t <Plug>SendFocusedTestToTmux
+"map ,R :SweetVimRspecRunFile<CR>
+"map ,r :SweetVimRspecRunFocused<CR>
+"map <M-D-r> :SweetVimRspecRunPrevious<CR> "(OPT-CMD-r)
+"
 
 vmap <C-c><C-c> <Plug>SendSelectionToTmux
 nmap <C-c><C-c> <Plug>NormalModeSendToTmux
@@ -127,12 +140,10 @@ map <leader>f :CtrlP<cr>
 map <leader>gf :CtrlP %%<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>cp :set invpaste<CR>:set paste?<CR>
+" map <leader>cp :set invpaste<CR>:set paste?<CR>
 
 " Tmux / turbux
 let g:no_turbux_mappings = 1
-map <leader>t <Plug>SendFocusedTestToTmux
-map <leader>T <Plug>SendTestToTmux
 
 " Rails Alternate file
 map <Leader>ra :A<CR>
@@ -177,7 +188,7 @@ if &term =~ "xterm\\|rxvt"
   autocmd VimLeave * silent !echo -ne "\033]112\007"
   " use \003]12;gray\007 for gnome-terminal
 endif
-
+,
 " Tabularize
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
