@@ -18,8 +18,25 @@
   a = add
   l = pull
   p = push
+  pa = push all --all
   aa = add --all
   ri = rebase -i
+
+  ;cou = !git checkout $1 ; && git submodule update
+  rbi = rebase -i HEAD~5
+  rbd = rebase develop
+
+  sl = stash list
+  sa = stash apply
+  sp = stash pop
+  ss = stash save
+  sd = stash drop
+
+  # Bisect
+  bs = bisect
+  bss = bisect start
+  bsg = bisect good
+  bsb = bisect bad
 
   smu = submodule update
   cp = cherry-pick
@@ -30,7 +47,11 @@
   # fix-done = !git flow hotfix finish `current_hotfix_branch`
   fix-done = "!_() { p=$(git config --get gitflow.prefix.hotfix); b=$(echo \"$(git branch --no-color | sed 's/^[* ] //')\" | grep \"^$p\"); f=$(echo ${b} | head -n1); f=${f#$p}; git flow hotfix finish \"$f\"; }; _"
 
-  lg = !git log --graph --pretty=oneline --abbrev-commit
+  # Log
+  lg = !git log --graph --pretty=oneline --abbrev-commit -30
+  lgg = !git --no-pager log --pretty=format:\"%h %cd %ae %s %b\"
+  ;slog = !sh -c 'git --no-pager log -g --grep=\'$1\''
+  slog = !git --no-pager log -g
 
   # Fancy logging.
   #   h = head
@@ -57,3 +78,9 @@
 	ui = true
 [push]
 	default = matching
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
