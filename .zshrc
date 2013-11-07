@@ -23,9 +23,18 @@ chpwd() {
 g() {
   if [[ $# > 0 ]]
   then
-    git $@
+    git --no-pager $@
   else
     git status
+  fi
+}
+
+s() {
+  if [ -S .zeus.sock ]
+  then
+    zeus rspec --format doc $1
+  else
+    bundle exec rspec --format doc $1
   fi
 }
 
@@ -35,7 +44,7 @@ g() {
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:~/bin
 
 # Android SDK
 export PATH=$PATH:$HOME/local/android-sdk-macosx/tools/:$HOME/local/android-sdk-macosx/platform-tools/
