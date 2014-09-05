@@ -5,6 +5,9 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="smt" # includes time since last git commit
 
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8
+
 source ~/.zsh_alias
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
