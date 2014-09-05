@@ -5,8 +5,10 @@
 
 " let g:solarized_termcolors=256
 set t_Co=16
-set background=dark
+set background=light
 colorscheme solarized
+
+filetype plugin on
 
 nmap \ ,
 
@@ -30,6 +32,22 @@ map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
 map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
 map <Leader>nf :sp ~/Dropbox/notes/workflow_notes.txt<cr>
+
+" visual select previous pasted text
+map gp `[v`]
+" paste +  auto formatting
+map ,vp pgp=
+" visual select block
+map ,vk V$%
+
+" Markers
+map ma <Plug>SIG_PlaceNextMark
+map <Leader>me <Plug>SIG_PrevSpotByPos
+map <Leader>mf <Plug>SIG_NextSpotByPos
+
+map dg :diffget <CR>
+map dga :diffget //2<CR>
+map dgb :diffget //3<CR>
 
 " Quickfix
 map <Leader>co :copen<CR>
@@ -77,6 +95,7 @@ map ,sn :e ~/.vim/janus/vim/tools/snipmate-snippets/snippets/ruby.snippets<cr>
 
 " vim-turbux, depends on TSlime
 "let g:turbux_command_rspec  = 'script/test'        " use Gary Bernhardt's script
+"let g:turbux_command_rspec  = 's'
 let g:turbux_command_rspec  = 's'
 let g:turbux_command_cucumber  = 'zeus cucumber'
 
@@ -107,6 +126,13 @@ inoremap kk <ESC>
 " set autosave true
 " why is below slow??
 map <Leader><Leader> <C-^>
+
+" Copy current buffer path relative to root of VIM session to system clipboard
+nnoremap <Leader>yp :let @*=expand("%")<cr>:echo "Copied file path to clipboard"<cr>
+" Copy current filename to system clipboard
+nnoremap <Leader>yf :let @*=expand("%:t")<cr>:echo "Copied file name to clipboard"<cr>
+" Copy current buffer path without filename to system clipboard
+nnoremap <Leader>yd :let @*=expand("%:h")<cr>:echo "Copied file directory to clipboard"<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ruby Refactoring
