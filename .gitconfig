@@ -67,6 +67,7 @@
   ra = !git r --all
   l = "!. ~/.githelpers && pretty_git_log"
   la = !git l --all  
+	today = log --since=midnight --author='Xin Zheng' --oneline
 [merge]
 	tool = diffmerge
 [mergetool "diffmerge"]
@@ -84,3 +85,5 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[github]
+	user = zaczheng
